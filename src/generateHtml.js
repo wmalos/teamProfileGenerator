@@ -1,5 +1,8 @@
 
 
+
+
+// Create function to generate html
 function generateHtml(data) {
 return 
 `<!DOCTYPE html>
