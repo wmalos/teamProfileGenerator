@@ -3,42 +3,51 @@ const jest = require("jest")
 const generateHtml = require("./src/generateHtml")
 
 
+//const employees = [];
+
 const questions = [
 
     {
-        type: 'input',
-        name: '',
-        message: '',
+        type: 'list',
+        name: 'member',
+        message: 'What role would you like to chose?',
+        choices: ["Engineer", "Intern", "Done adding team members"]
     },
 
     {
         type: 'input',
-        name: '',
-        message: '',
+        name: 'name',
+        message: 'Enter employee name',
     },
 
     {
         type: 'input',
-        name: '',
-        message: '',
+        name: 'id',
+        message: 'Enter employee ID number',
     },
 
     {
         type: 'input',
-        name: '',
-        message: '',
+        name: 'officeNumber',
+        message: 'Enter managers office number',
     },
 
     {
         type: 'input',
-        name: '',
-        message: '',
+        name: 'github',
+        message: 'Enter github username',
     },
 
     {
         type: 'input',
-        name: '',
-        message: '',
+        name: 'school',
+        message: 'Enter current school of intern',
+    },
+
+    {
+        type: 'confirm',
+        name: 'addEmployee',
+        default: true,
     },
 
 
