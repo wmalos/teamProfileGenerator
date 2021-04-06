@@ -56,7 +56,8 @@ function addEmployee() {
                 message: 'Do you want to add another team member?',
                 choices: ["yes","no"]
             },
-
+            ])
+            
             then(function() {
                 if (moreMembers === "yes") {
                     addEmployee();
@@ -66,6 +67,7 @@ function addEmployee() {
             })
 
         }
+
 
 
 
