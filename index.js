@@ -3,21 +3,22 @@ const jest = require("jest")
 const generateHtml = require("./src/generateHtml")
 
 
-//const employees = [];
+const employees = [];
 
-const questions = [
-
-    {
-        type: 'list',
-        name: 'member',
-        message: 'What role would you like to chose?',
-        choices: ["Engineer", "Intern", "Done adding team members"]
-    },
+function addEmployee() {
+    inquirer.prompt([
 
     {
         type: 'input',
         name: 'name',
-        message: 'Enter employee name',
+        message: 'Enter team member name'
+    },
+
+    {
+        type: 'list',
+        name: 'role',
+        message: 'Enter the employees role',
+        choices: ["Engineer", "Intern", "Manager"]
     },
 
     {
@@ -25,6 +26,18 @@ const questions = [
         name: 'id',
         message: 'Enter employee ID number',
     },
+
+    {
+        type: 'input',
+        name: 'email',
+        message: 'Enter employees email',
+    }])
+    .then(function({name, role, id, email}) {
+        if (role === "Engineer") {
+            
+        }
+    }
+
 
     {
         type: 'input',
@@ -41,7 +54,7 @@ const questions = [
     {
         type: 'input',
         name: 'school',
-        message: 'Enter current school of intern',
+        message: 'Enter current school'
     },
 
     {
@@ -50,5 +63,5 @@ const questions = [
         default: true,
     },
 
-
-]
+    ])
+}
