@@ -1,82 +1,124 @@
 const inquirer = require("inquirer")
+const fs = require("fs");
 const jest = require("jest")
 const generateHtml = require("./src/generateHtml")
 
+const Manager = require('./lib/Manager');
+const Engineer = require('./lib/Engineer');
+const intern = require('./lib/Intern');
+const Intern = require("./lib/Intern");
 
 const employees = [];
 
+const questions = [
+    {
+        type: 'input',
+        name: 'name',
+        message: 'Enter team member name'
+    },
+
+    {
+        type: 'list',
+        name: 'role',
+        message: 'Enter the employees role',
+        choices: ["Engineer", "Intern", "Manager"]
+    },
+
+    {
+        type: 'input',
+        name: 'id',
+        message: 'Enter employee ID number',
+    },
+
+    {
+        type: 'input',
+        name: 'email',
+        message: 'Enter employees email',
+    },
+
+    {
+        type: 'input',
+        message: 'Enter Managers office number',
+        name: 'officeNumber',
+        when: ( answers ) => answers.role === "Manager",
+    },
+
+    {
+        type: 'input',
+        message: 'Enter Github username',
+        name: 'github',
+        when: ( answers ) => answers.role === "Engineer",
+    },
+
+    {
+        type: 'input',
+        message: 'Enter the school of the intern',
+        name: 'school',
+        when: ( answers ) => answers.role === "Intern",
+    },
+
+
+];
+
+
+const promptUser = () => {
+    
+    inquirer.prompt(questions)
+        .then(userResponse => {
+
+            switch (userResponse.role) {
+                case "Manager":
+                    const manager = new Manager(
+                        userResponse.name,
+                        userResponse.id, 
+                        userResponse.email, 
+                        userResponse.officeNumber)
+                        employees.push(manager)
+                    break;
+                case "Engineer":
+                    const engineer = new Engineer(
+                        userResponse.name,
+                        userResponse.id, 
+                        userResponse.email, 
+                        userResponse.github)
+                        employees.push(engineer)
+                    break;
+                case "Intern":
+                    const intern = new Intern(
+                        userResponse.name,
+                        userResponse.id, 
+                        userResponse.email, 
+                        userResponse.school)
+                        employees.push(intern)
+                    break;
+            
+                default:
+                    break;
+            }
+
+            addEmployee();
+        });
+};
+
 function addEmployee() {
-    inquirer.prompt([
-
-        {
-            type: 'input',
-            name: 'name',
-            message: 'Enter team member name'
-        },
-
+    inquirer.prompt( [
         {
             type: 'list',
-            name: 'role',
-            message: 'Enter the employees role',
-            choices: ["Engineer", "Intern", "Manager"]
+            name: 'addMember',
+            message: 'Do you want to add another team member?',
+            choices: ["yes", "no"]
         },
-
-        {
-            type: 'input',
-            name: 'id',
-            message: 'Enter employee ID number',
-        },
-
-        {
-            type: 'input',
-            name: 'email',
-            message: 'Enter employees email',
+    ]).then(function (answers) {
+        if (answers.addMember === "yes") {
+            promptUser();
+        } else {
+            console.log (employees);
+            generateHtml(employees);
         }
-    ])
-        .then(function ({ name, role, id, email }) {
-            let roleInfo = "";
-            if (role === "Engineer") {
-                roleInfo = "GitHub username";
-            } else if (role === "Intern") {
-                roleInfo = "school name";
-            } else {
-                roleInfo = "office number";
-            }
-            inquirer.prompt([
-
-            {
-                type: 'input',
-                name: "roleInfo",
-                message: `Enter team member's ${roleInfo}`,
-            },
-
-            {
-                type: 'list',
-                name: 'addMember',
-                message: 'Do you want to add another team member?',
-                choices: ["yes","no"]
-            },
-            ])
-            
-            then(function() {
-                if (moreMembers === "yes") {
-                    addEmployee();
-                } else {
-                    generateHtml();
-                }
-            })
-
-        }
-
-
-
-
-
-   // {
-    //type: 'confirm',
-    //    name: 'addEmployee',
-   //     default: true,
-    //},
-
-    ])
+    })
 }
+
+
+
+promptUser();
+

@@ -1,9 +1,15 @@
+const generateCard = require('./generateCard')
+generateCard.generateManager
+generateCard.generateEngineer
+generateCard.generateIntern
 
-
-
+const generatedCards = [];
 
 // Create function to generate html
-function generateHtml(data) {
+function generateHtml(answers) {
+    for (var i = 0; i < answers.length; i++) {
+        //if else
+    }
 return 
 `<!DOCTYPE html>
 <html lang="en">
@@ -22,7 +28,7 @@ return
     <div class="container">
         <div class="col-6">
             <div class="row">
-
+                ${generatedCards.join('')}
             </div>
         </div>
     </div>
