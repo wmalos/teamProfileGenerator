@@ -118,7 +118,14 @@ function addEmployee() {
     })
 }
 
-
+const createProfile = (generateHtml) => {
+    fs.writeFile('./dist/index.html', generateHtml, err => {
+        if (err) {
+            console.log("There was an error generating html")
+            return;
+        }
+        console.log("Succesfully generated Team Profile!")
+    })
+}
 
 promptUser();
-

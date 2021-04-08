@@ -8,7 +8,14 @@ const generatedCards = [];
 // Create function to generate html
 function generateHtml(answers) {
     for (var i = 0; i < answers.length; i++) {
-        //if else
+        if (role === "Manager") {
+            generateCard.generateManager
+        } else if (role === "Engineer") {
+            generateCard.generateEngineer
+        } else if (role === "Intern") {
+            generateCard.generateIntern
+        }
+        
     }
 return 
 `<!DOCTYPE html>
