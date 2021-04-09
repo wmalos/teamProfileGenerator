@@ -1,6 +1,6 @@
 const inquirer = require("inquirer")
 const fs = require("fs");
-const jest = require("jest")
+//const jest = require("jest")
 const generateHtml = require("./src/createHtml")
 
 const Employee = require('./lib/Employee');
@@ -61,7 +61,7 @@ const questions = [
 ];
 
 
-const promptUser = () => {
+function init() {
     
     inquirer.prompt(questions)
         .then(userResponse => {
@@ -97,6 +97,7 @@ const promptUser = () => {
             }
 
             addEmployee();
+            
         });
 };
 
@@ -110,16 +111,16 @@ function addEmployee() {
         },
     ]).then(function (answers) {
         if (answers.addMember === "yes") {
-            promptUser();
-        } else {
-            console.log (employees);
-            generateHtml(employees);
+            init();
+        } else { 
+            writeToFile('./dist/index.html', generateHtml(employees));    
         }
     })
 }
 
-const createProfile = (generateHtml) => {
-    fs.writeFile('./dist/index.html', generateHtml, err => {
+function writeToFile (fileName, answers) {
+    console.log(answers)
+    fs.writeFile(fileName, answers, (err) => {
         if (err) {
             console.log("There was an error generating html")
             return;
@@ -128,4 +129,6 @@ const createProfile = (generateHtml) => {
     })
 }
 
-promptUser();
+
+
+init();

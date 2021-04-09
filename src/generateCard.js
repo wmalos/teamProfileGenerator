@@ -1,6 +1,5 @@
 function generateManager(answers) {
-    return
-    `
+    return `
 <div class="card mx-auto" style="width: 18rem">
     <h5 class="card-header">${answers.name}<br /><br />Manager</h5>
     <ul class="list-group list-group-flush">
@@ -13,8 +12,7 @@ function generateManager(answers) {
 }
 
 function generateEngineer(answers) {
-    return
-    `
+    return `
     <div class="card mx-auto" style="width: 18rem">
         <h5 class="card-header">${answers.name}<br /><br />Engineer</h5>
         <ul class="list-group list-group-flush">
@@ -28,8 +26,7 @@ function generateEngineer(answers) {
 
 
 function generateIntern(answers) {
-    return
-    `
+    return `
     <div class="card mx-auto" style="width: 18rem">
         <h5 class="card-header">${answers.name}<br /><br />Intern</h5>
         <ul class="list-group list-group-flush">
