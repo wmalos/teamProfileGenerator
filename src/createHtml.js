@@ -34,12 +34,6 @@ return
 </html>
 `;
 }
-
-
-
-
-
-
-
+}
 
 module.exports = generateHtml;
