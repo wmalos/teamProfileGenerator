@@ -3,9 +3,9 @@ const fs = require("fs");
 const jest = require("jest")
 const generateHtml = require("./src/generateHtml")
 
+const Employee = require('./lib/Employee');
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
-const intern = require('./lib/Intern');
 const Intern = require("./lib/Intern");
 
 const employees = [];
