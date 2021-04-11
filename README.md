@@ -15,11 +15,10 @@ Requires inquirer and jest in order to run
 ## Usage
 The application runs through the terminal using node
 
-## License
-![None](https://https://img.shields.io/badge/license-None-lightgrey)
 
 ## Contact
 Email: wmalos22@gmail.com
 
 Github: https://github.com/wmalos
 
+Video Link: https://drive.google.com/file/d/13q3C8slyWWMzVWUybiKGOkLPZ4rzlIyJ/view?usp=sharing
